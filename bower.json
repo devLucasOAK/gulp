@@ -1,0 +1,29 @@
+{
+  "name": "quizapp",
+  "description": "we are create a quiz app using angularjs",
+  "main": "app.js",
+  "authors": [
+    "LucasOAK"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "quiz",
+    "angularjs"
+  ],
+  "homepage": "https://github.com/devLucasOAK/quiz-app",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.8.2",
+    "bootstrap": "^4.6.0",
+    "lodash": "^4.17.21",
+    "angular-route": "^1.8.2",
+    "jquery": "^3.6.0"
+  }
+}

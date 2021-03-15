@@ -3,15 +3,17 @@
 var gulp = require('gulp');
 var concat = require('gulp-concat');
 var angularFileSort = require('gulp-angular-filesort');
-var templateCache = require('gulp-angular-template-cache');
+var templateCache = require('gulp-angular-templatecache');
 var ngAnnotate = require('gulp-ng-annotate');
-var mainbowerfiles = require('main-bower-files');
-const mainBowerFiles = require('main-bower-files');
+var mainBowerFiles = require('main-bower-files');
+var gulpUglify = require('gulp-uglify');
+
 
 gulp.task('libs', function(){
-    return gulp.src(mainBowerFiles(), {
-        base: 'app/bower_components'
-    })
+    return gulp.src(mainBowerFiles())
+    .pipe(angularFileSort())
+    .pipe(concat('libs.js'))
+    .pipe(gulpUglify())
     .pipe(gulp.dest('dist/src'));
 });
 
@@ -24,9 +26,9 @@ gulp.task('appModules', function (){
 });
 
 gulp.task('css', function(){
-    return gulp.src('app/css/*.js')
+    return gulp.src('app/css/*.css')
     .pipe(concat('style.css'))
-    .pipe(gulp.dist('dist/src'));
+    .pipe(gulp.dest('dist/src'));
 });
 
 gulp.task('templates', function(){
@@ -35,5 +37,5 @@ gulp.task('templates', function(){
         module: 'quizApp',
         root: 'app/templates'
     }))
-    .pipe(gulp.dist('dist/src'));
+    .pipe(gulp.dest('dist/src'));
 });
